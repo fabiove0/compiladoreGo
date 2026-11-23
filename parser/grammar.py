@@ -572,29 +572,5 @@ class Gramatica:
         print("\nTerminais:", " ".join(sorted(self.terminais)))
         print()
 
-
-# ============================================================
-# 4. USO E TESTE
-# ============================================================
-
 gramatica = Gramatica(PRODUCOES, SIMBOLO_INICIAL)
 
-
-if __name__ == "__main__":
-
-    if gramatica.validar():
-        print("Gramática válida!")
-        print(f"{len(gramatica.nao_terminais)} não terminais, "
-              f"{len(gramatica.terminais)} terminais, "
-              f"{len(gramatica.lista_producoes)} produções")
-
-        gramatica.mostrar_gramatica()
-        gramatica.mostrar_simbolos()
-
-        nao_usados = sorted(TERMINAIS_DO_LEXER - gramatica.terminais)
-        print("Tokens do lexer que a gramática NÃO usa "
-              "(construções não suportadas):")
-        print(" ", " ".join(nao_usados))
-
-        print("\nGramática aumentada (começa com Programa' -> Programa):")
-        gramatica.gramatica_aumentada().mostrar_gramatica()
